@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Native 架构收敛"
+  short_description: "收敛复杂 AI 产品架构并完成权威、交接与产品基线审查"
+  default_prompt: "Use $ai-native-architecture-convergence to establish the decision domain and converge this AI product architecture."
