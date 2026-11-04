@@ -1,6 +1,8 @@
 ---
 name: ai-native-architecture-convergence
 description: 收敛复杂 AI Native 产品的业务、Agent、产品与技术架构。用于建立完整决策域，审查事实权威、Agent 与确定性系统分层、跨模块 Handoff、生命周期和历史决策，执行对抗式完成闸门，或把已确认架构转换为产品信息架构与端到端用户路径。不要用于普通编码排错、孤立页面设计或无需架构判断的简单功能修改。
+metadata:
+  version: "1.1.0"
 ---
 
 # AI Native 产品架构收敛
@@ -30,6 +32,7 @@ description: 收敛复杂 AI Native 产品的业务、Agent、产品与技术架
 - 回看旧文档、已确认决策或判断是否重开：读取 [历史决策审计](references/historical-decision-audit.md)。
 - 核心模块准备 Accepted、冻结或关闭：读取 [对抗式完成闸门](references/adversarial-completion-gate.md)。
 - 架构已确认，需要形成信息架构、用户旅程或 PRD 边界：读取 [架构转产品基线](references/architecture-to-product-baseline.md)。
+- 需要形成稳定、可交接的架构产物：按需读取 [轻量输出契约](references/output-contracts.md)，只使用当前任务需要的模板。
 
 多个模式可以组合，但不要为了形式加载全部参考文件。
 
@@ -90,3 +93,17 @@ description: 收敛复杂 AI Native 产品的业务、Agent、产品与技术架
 本 Skill 提供分析、审计和交付结构，不授予文件修改、Git、依赖安装、外部系统写入或生产操作权限。执行动作前继续遵守当前项目的授权闸门和权威文档。
 
 项目特定对象、状态、套餐、Agent 名称和支付规则应保留在项目权威正文中；本 Skill 只规定如何分析、校验和收敛，不预设具体答案。
+
+## 8. 基于证据演进
+
+不要因为单次失败或新场景就继续扩写主指令。先判断问题属于项目特例、宿主能力限制，还是跨任务重复出现的通用缺口。
+
+修改正式规则前：
+
+1. 用 [行为评测案例](evals/cases.md) 复现问题；
+2. 说明改动解决什么失败，以及不改变什么边界；
+3. 对相关既有案例做回归，避免提高一种任务表现却破坏另一种任务；
+4. 只有重复且稳定的领域差异才建立可选 Domain Pack，不把项目知识写入通用入口；
+5. Skill 可以提出改进候选，但正式 Prompt、权限、评测和版本仍需人类审核发布。
+
+评测关注可观察行为和架构不变量，不要求固定措辞、固定标题或统一篇幅。
